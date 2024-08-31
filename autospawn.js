@@ -40,9 +40,7 @@ function autospawn(number, role, spawnName) {
             { align: 'left', opacity: 0.8 });
     }
     
-    module.exports = {
-        autospawn
-    }
+
 }
 
 module.exports = {
