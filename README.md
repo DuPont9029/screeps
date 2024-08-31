@@ -64,6 +64,18 @@ module.exports.loop = function () {
 ```
 &nbsp;
 
+
+
+## spawn upgrader creep
+
+> /console
+```javascript
+Game.spawns['Spawn1'].spawnCreep( [WORK, CARRY, MOVE], 'Upgrader1' );
+```
+&nbsp;
+
+
+
 ## Modules subdivision
 
 > /main
