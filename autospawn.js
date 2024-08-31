@@ -1,7 +1,7 @@
 function autospawn(number, role, spawnName) {
 
     var EntityNumber = _.filter(Game.creeps, (creep) => creep.memory.role == role).length;
-    console.log('Creeps: ' + type);
+    console.log('Creeps: ' + EntityNumber);
 
 
     if (role == "harvester" && number < EntityNumber) {
