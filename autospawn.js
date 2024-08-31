@@ -11,6 +11,7 @@ function autospawn(number, role, spawnName) {
     }
     else {
         console.error('max number of harvester reached');
+        
     }
     if (role == "upgrader" && number < EntityNumber) {
         for (let i = 0; i < number; i++) {
@@ -19,6 +20,7 @@ function autospawn(number, role, spawnName) {
     }
     else {
         console.error('max number of upgrader reached');
+        
     }
     if (role == "builder" && number < EntityNumber) {
         for (let i = 0; i < number; i++) {
@@ -27,6 +29,7 @@ function autospawn(number, role, spawnName) {
     }
     else {
         console.error('max number of builder reached');
+        
     }
 
     if (Game.spawns[spawnName].spawning) {
