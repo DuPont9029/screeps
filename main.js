@@ -12,7 +12,10 @@ module.exports.loop = function () {
         }
     }
 
-    autospawn(2, "harvester", "Spawn1");
+    autospawn(4, "upgrader", "Spawn1")
+    .then(() => autospawn(2, "harvester", "Spawn1"))
+    .then(() => autospawn(2, "builder", "Spawn1"))
+    .catch(error => console.error('Error in autospawn:', error));
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
