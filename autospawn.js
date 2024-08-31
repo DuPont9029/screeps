@@ -33,7 +33,7 @@ function autospawn(number, role, spawnName) {
     else if (role == "rangedAttacker") {
         if (EntityNumber < number) {
             for (let i = 0; i < number - EntityNumber; i++) {
-                Game.spawns[spawnName].spawnCreep([RANGED_ATTACK, MOVE], 'RangedAttacker' + Game.time, { memory: { role: 'rangedAttacker' } });
+                Game.spawns[spawnName].spawnCreep([TOUGH, TOUGH, RANGED_ATTACK, MOVE], 'RangedAttacker' + Game.time, { memory: { role: 'rangedAttacker' } });
             }
         } else {
             console.log('max number of ranged attackers reached');
