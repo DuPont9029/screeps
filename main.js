@@ -12,10 +12,7 @@ module.exports.loop = function () {
         }
     }
 
-    autospawn(4, "upgrader", "Spawn1")
-    .then(() => autospawn(2, "harvester", "Spawn1"))
-    .then(() => autospawn(2, "builder", "Spawn1"))
-    .catch(error => console.error('Error in autospawn:', error));
+    autospawn(2, "harvester", "Spawn1");
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
@@ -26,7 +23,7 @@ module.exports.loop = function () {
             roleUpgrader.run(creep);
         }
         if(creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
+            roleUpgrader.run(creep);
         }
     }
 }
