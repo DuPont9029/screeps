@@ -1,18 +1,32 @@
 function autospawn(number, role, spawnName) {
-    if (role == "harvester") {
+
+    var EntityNumber = _.filter(Game.creeps, (creep) => creep.memory.role == role).length;
+    console.log('Creeps: ' + type);
+
+
+    if (role == "harvester" && number < EntityNumber) {
         for (let i = 0; i < number; i++) {
             Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], 'Harvester' + Game.time, { memory: { role: 'harvester' } });
         }
     }
-    if (role == "upgrader") {
+    else {
+        console.error('max number of harvester reached');
+    }
+    if (role == "upgrader" && number < EntityNumber) {
         for (let i = 0; i < number; i++) {
             Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], 'Upgrader' + Game.time, { memory: { role: 'upgrader' } });
         }
     }
-    if (role == "builder") {
+    else {
+        console.error('max number of upgrader reached');
+    }
+    if (role == "builder" && number < EntityNumber) {
         for (let i = 0; i < number; i++) {
             Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], 'Builder' + Game.time, { memory: { role: 'builder' } });
         }
+    }
+    else {
+        console.error('max number of builder reached');
     }
 
     if (Game.spawns[spawnName].spawning) {
