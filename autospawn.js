@@ -6,7 +6,7 @@ function autospawn(number, role, spawnName) {
     if (role == "harvester") {
         if (EntityNumber < number) {
             for (let i = 0; i < number; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], 'Harvester' + Game.time, { memory: { role: 'harvester' } });
+                Game.spawns[spawnName].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE], 'Harvester' + Game.time, { memory: { role: 'harvester' } });
             }
         } else {
             console.log('max number of harvester reached');
