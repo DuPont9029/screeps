@@ -42,7 +42,7 @@ function autospawn(number, role, spawnName) {
     else if (role == "healer") {
         if (EntityNumber < number) {
             for (let i = 0; i < number - EntityNumber; i++) {
-                Game.spawns[spawnName].spawnCreep([HEAL, MOVE, MOVE], 'Healer' + Game.time, { memory: { role: 'healer' } });
+                Game.spawns[spawnName].spawnCreep([HEAL, MOVE, MOVE], 'Healer' + Game.time, { memory: { role: 'healer' } }); //! 300 energy cost, too expensive
             }
         } else {
             console.log('max number of healers reached');
