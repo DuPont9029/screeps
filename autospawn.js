@@ -15,7 +15,7 @@ function autospawn(number, role, spawnName) {
     else if (role == "upgrader") {
         if (EntityNumber < number) {
             for (let i = 0; i < number; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], 'Upgrader' + Game.time, { memory: { role: 'upgrader' } });
+                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE], 'Upgrader' + Game.time, { memory: { role: 'upgrader' } });
             }
         } else {
             console.log('max number of upgrader reached');
@@ -24,7 +24,7 @@ function autospawn(number, role, spawnName) {
     else if (role == "builder") {
         if (EntityNumber < number) {
             for (let i = 0; i < number; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, MOVE], 'Builder' + Game.time, { memory: { role: 'builder' } });
+                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE], 'Builder' + Game.time, { memory: { role: 'builder' } });
             }
         } else {
             console.log('max number of builder reached');
