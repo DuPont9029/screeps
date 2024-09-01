@@ -39,6 +39,15 @@ function autospawn(number, role, spawnName) {
             console.log('max number of ranged attackers reached');
         }
     }
+    else if (role == "healer") {
+        if (EntityNumber < number) {
+            for (let i = 0; i < number - EntityNumber; i++) {
+                Game.spawns[spawnName].spawnCreep([HEAL, MOVE, MOVE], 'Healer' + Game.time, { memory: { role: 'healer' } });
+            }
+        } else {
+            console.log('max number of healers reached');
+        }
+    }
     
     if (Game.spawns[spawnName].spawning) {
         var spawningCreep = Game.creeps[Game.spawns[spawnName].spawning.name];
