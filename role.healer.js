@@ -24,7 +24,7 @@ var roleHealer = {
                 }
             } else {
                 // Se non ci sono fonti libere e sicure, muoviti verso una posizione di attesa
-                creep.moveTo(Game.flags['WaitFlag']);
+                creep.moveTo(Game.flags['WaitFlag'], {visualizePathStyle: {stroke: '#ffaa00'}});
             }
             return;
         }
