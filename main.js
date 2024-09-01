@@ -29,5 +29,8 @@ module.exports.loop = function () {
         if(creep.memory.role == 'rangedAttacker') {
             roleRangedAttacker.run(creep);
         }
+        if(creep.memory.role == 'healer') {
+            roleHealer.run(creep);
+        }
     }
 }
