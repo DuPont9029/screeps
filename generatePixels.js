@@ -4,8 +4,12 @@ function generatePixels(control, print) {
     if (Game.cpu.bucket >= CPU_THRESHOLD && control===true) {
         Game.cpu.generatePixel();
         console.log('Pixel generated.');
+    }
+    else if (game.cpu.bucket === 10000) {
+        Game.cpu.generatePixel();
+        console.log('Pixel generated.');
     } else if (print) {
-        console.log('Not enough CPU to generate a pixel, \n current cpu bucket is: ' + Game.cpu.bucket + '/5000' + '\n consent to generate is: ' + control);
+        console.log('Unable to generate a pixel, \n current cpu bucket is: ' + Game.cpu.bucket + '/5000' + '\n consent to generate is: ' + control);
     }
 }
 
