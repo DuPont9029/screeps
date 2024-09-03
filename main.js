@@ -4,6 +4,7 @@ var roleBuilder = require('role.builder');
 var roleRangedAttacker = require('role.rangedAttacker');
 var roleHealer = require('role.healer');
 var { autospawn } = require('autospawn');
+var generatePixels = require('generatepixels');
 
 module.exports.loop = function () {
 
@@ -13,7 +14,8 @@ module.exports.loop = function () {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
-
+    
+    generatePixels(false, true);
     autospawn(2, "harvester", "Spawn1");
 
     for(var name in Game.creeps) {
