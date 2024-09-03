@@ -5,7 +5,7 @@ function generatePixels(control, print) {
         Game.cpu.generatePixel();
         console.log('Pixel generated.');
     }
-    else if (game.cpu.bucket === 10000) {
+    else if (Game.cpu.bucket === 10000) {
         Game.cpu.generatePixel();
         console.log('Pixel generated.');
     } else if (print) {
