@@ -51,7 +51,7 @@ function autospawn(number, role, spawnName) {
     else if (role == "reloader") {
         if (EntityNumber < number) {
             for (let i = 0; i < number - EntityNumber; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE, MOVE], 'Reloader' + Game.time, { memory: { role: 'reloader' } });
+                Game.spawns[spawnName].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE], 'Reloader' + Game.time, { memory: { role: 'reloader' } });
             }
         } else {
             console.log('max number of reloaders reached');
