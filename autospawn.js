@@ -48,6 +48,15 @@ function autospawn(number, role, spawnName) {
             console.log('max number of healers reached');
         }
     }
+    else if (role == "reloader") {
+        if (EntityNumber < number) {
+            for (let i = 0; i < number - EntityNumber; i++) {
+                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE, MOVE], 'Reloader' + Game.time, { memory: { role: 'reloader' } });
+            }
+        } else {
+            console.log('max number of reloaders reached');
+        }
+    }
     
     if (Game.spawns[spawnName].spawning) {
         var spawningCreep = Game.creeps[Game.spawns[spawnName].spawning.name];

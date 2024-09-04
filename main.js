@@ -6,6 +6,7 @@ var roleHealer = require('role.healer');
 var { autospawn } = require('autospawn');
 var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
+var roleReloader = require('role.reloader');
 
 module.exports.loop = function () {
 
@@ -46,6 +47,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'healer') {
             roleHealer.run(creep);
+        }
+        if(creep.memory.role == 'reloader') {
+            roleReloader.run(creep);
         }
     }
 }
