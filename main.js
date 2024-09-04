@@ -5,6 +5,7 @@ var roleRangedAttacker = require('role.rangedAttacker');
 var roleHealer = require('role.healer');
 var { autospawn } = require('autospawn');
 var generatePixels = require('generatePixels');
+var tower = require('structure.tower');
 
 module.exports.loop = function () {
 
@@ -17,6 +18,17 @@ module.exports.loop = function () {
 
     generatePixels(false, true);
     autospawn(2, "harvester", "Spawn1");
+    /*
+        autospawn(2, "upgrader", "Spawn1");
+        autospawn(2, "builder", "Spawn1");
+    */
+
+
+    for (let rooms in Game.rooms) {
+        
+        let room = Game.rooms[rooms];
+        tower.run(room);
+    }
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
