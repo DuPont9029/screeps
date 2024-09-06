@@ -16,3 +16,5 @@ function autospawn(number, role, spawnName) {
         console.log('Role not recognized: ' + role);
     }
 }
+
+module.exports = autospawn;
