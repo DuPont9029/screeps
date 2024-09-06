@@ -1,75 +1,18 @@
-function autospawn(number, role, spawnName) {
+const roleProperties = require('role.properties');
 
-    var EntityNumber = _.filter(Game.creeps, (creep) => creep.memory.role == role).length; // number of creeps
+function autospawn(number, role, spawnName) {
+    var EntityNumber = _.filter(Game.creeps, (creep) => creep.memory.role == role).length; // numero di creeps
     console.log('Creeps: ' + EntityNumber); 
 
-    if (role == "harvester") {
-        if (EntityNumber < number) {
-            for (let i = 0; i < number; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE], 'Harvester' + Game.time, { memory: { role: 'harvester' } });
-            }
-        } else {
-            console.log('max number of harvester reached');
-        }
-    } 
-    else if (role == "upgrader") {
-        if (EntityNumber < number) {
-            for (let i = 0; i < number; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE], 'Upgrader' + Game.time, { memory: { role: 'upgrader' } });
-            }
-        } else {
-            console.log('max number of upgrader reached');
-        }
-    } 
-    else if (role == "builder") {
-        if (EntityNumber < number) {
-            for (let i = 0; i < number; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE], 'Builder' + Game.time, { memory: { role: 'builder' } });
-            }
-        } else {
-            console.log('max number of builder reached');
-        }
-    }
-    else if (role == "rangedAttacker") {
+    if (roleProperties[role]) {
         if (EntityNumber < number) {
             for (let i = 0; i < number - EntityNumber; i++) {
-                Game.spawns[spawnName].spawnCreep([TOUGH, TOUGH, RANGED_ATTACK, MOVE], 'RangedAttacker' + Game.time, { memory: { role: 'rangedAttacker' } });
+                Game.spawns[spawnName].spawnCreep(roleProperties[role], role.charAt(0).toUpperCase() + role.slice(1) + Game.time, { memory: { role: role } });
             }
         } else {
-            console.log('max number of ranged attackers reached');
+            console.log('max number of ' + role + ' reached');
         }
+    } else {
+        console.log('Role not recognized: ' + role);
     }
-    else if (role == "healer") {
-        if (EntityNumber < number) {
-            for (let i = 0; i < number - EntityNumber; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, CARRY, CARRY, MOVE], 'Healer' + Game.time, { memory: { role: 'healer' } }); //! 300 energy cost, too expensive
-            }
-        } else {
-            console.log('max number of healers reached');
-        }
-    }
-    else if (role == "reloader") {
-        if (EntityNumber < number) {
-            for (let i = 0; i < number - EntityNumber; i++) {
-                Game.spawns[spawnName].spawnCreep([WORK, WORK, CARRY, CARRY, MOVE], 'Reloader' + Game.time, { memory: { role: 'reloader' } });
-            }
-        } else {
-            console.log('max number of reloaders reached');
-        }
-    }
-    
-    if (Game.spawns[spawnName].spawning) {
-        var spawningCreep = Game.creeps[Game.spawns[spawnName].spawning.name];
-        Game.spawns[spawnName].room.visual.text(
-            '🛠️' + spawningCreep.memory.role,
-            Game.spawns[spawnName].pos.x + 1,
-            Game.spawns[spawnName].pos.y,
-            { align: 'left', opacity: 0.8 });
-    }
-    
-
-}
-
-module.exports = {
-    autospawn
 }
