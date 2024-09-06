@@ -2,7 +2,7 @@ var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if(creep.store.getFreeCapacity() > 0) {
+        if(creep.store[RESOURCE_ENERGY] == 0) {
             // Se il creep non ha un nodo minerario assegnato, assegnagliene uno
             if (!creep.memory.sourceId) {
                 var sources = creep.room.find(FIND_SOURCES);
