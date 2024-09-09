@@ -1,5 +1,5 @@
 let troopnumber = 1;
-const avoidUsername = 'nneverquest'; // Define the username to avoid attacking
+const avoidUsername = 'neverquest'; // Define the username to avoid attacking
 
 var roleRangedAttacker = {
 
