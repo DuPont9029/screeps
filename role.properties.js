@@ -6,7 +6,8 @@ const roleProperties = {
     healer: [WORK, CARRY, CARRY, MOVE], // Nota: questo potrebbe essere troppo costoso
     reloader: [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE],
     claimer: [CLAIM, MOVE],
-    reserver: [CLAIM, MOVE]
+    reserver: [CLAIM, MOVE],
+    signer: [CLAIM, MOVE]
 };
 
 module.exports = roleProperties;

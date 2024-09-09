@@ -1,4 +1,5 @@
 let structurehits = 15000000;
+const avoidUsername = 'neverquest'; // Define the username to avoid attacking
 
 var structureTower = {
     run: function (roomName) {
@@ -32,7 +33,9 @@ var structureTower = {
                     }
                 }
 
-                var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+                var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                    filter: (creep) => creep.owner.username !== avoidUsername
+                });
                 if (closestHostile) {
                     tower.attack(closestHostile);
                 }
