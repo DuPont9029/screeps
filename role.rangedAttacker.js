@@ -1,4 +1,5 @@
-let troopnumber = 3;
+let troopnumber = 1;
+const avoidUsername = 'nneverquest'; // Define the username to avoid attacking
 
 var roleRangedAttacker = {
 
@@ -21,8 +22,10 @@ var roleRangedAttacker = {
             }
         }
 
-        // Cerca i nemici nella stanza
-        var target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        // Cerca i nemici nella stanza, escludendo quelli dell'utente 'nneverquest'
+        var target = creep.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+            filter: (creep) => creep.owner.username !== avoidUsername
+        });
 
         if(target && creep.memory.readyToAttack) {
             // Se c'è un nemico e il creep è pronto per attaccare, attaccalo
