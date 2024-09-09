@@ -7,6 +7,8 @@ var autospawn = require('autospawn');
 var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
 var roleReloader = require('role.reloader');
+var roleClaimer = require('role.claimer');
+var roleReserver = require('role.reserver');
 
 module.exports.loop = function () {
 
@@ -50,6 +52,12 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'reloader') {
             roleReloader.run(creep);
+        }
+        if(creep.memory.role == 'claimer') {
+            roleClaimer.run(creep);
+        }
+        if(creep.memory.role == 'reserver') {
+            roleReserver.run(creep);
         }
     }
 }
