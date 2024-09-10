@@ -7,7 +7,8 @@ const roleProperties = {
     reloader: [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE],
     claimer: [CLAIM, MOVE],
     reserver: [CLAIM, MOVE],
-    signer: [CLAIM, MOVE]
+    signer: [CLAIM, MOVE],
+    distantHarvester: [WORK, CARRY, CARRY, MOVE]
 };
 
 module.exports = roleProperties;

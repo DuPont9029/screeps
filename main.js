@@ -10,6 +10,7 @@ var roleReloader = require('role.reloader');
 var roleClaimer = require('role.claimer');
 var roleReserver = require('role.reserver');
 var roleSigner = require('role.signer');
+var roleSuppliesSender = require('role.suppliesSender');
 
 module.exports.loop = function () {
 
@@ -62,6 +63,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'signer') {
             roleSigner.run(creep);
+        }
+        if(creep.memory.role == 'suppliesSender') {
+            roleSuppliesSender.run(creep);
         }
     }
 }
