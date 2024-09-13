@@ -4,7 +4,7 @@ const avoidUsername = ['neverquest', 'Duce']; // Define the username to avoid at
 var roleRangedAttacker = {
 
     
-    /** @param {Creep} creep **/
+    /* @param {Creep} creep */
     run: function(creep) {
     // Posizione di pattuglia
     var patrolFlag = Game.flags['PATROL'];
