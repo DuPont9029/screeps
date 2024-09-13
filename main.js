@@ -26,6 +26,7 @@ module.exports.loop = function () {
 //    /*
     autospawn(4, "upgrader", "Spawn1");
     autospawn(2, "builder", "Spawn1");
+    autospawn(1, "reloader", "Spawn1");
 //    */
 
 
