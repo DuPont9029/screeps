@@ -24,7 +24,7 @@ module.exports.loop = function () {
     generatePixels(false, true);
     autospawn(2, "harvester", "Spawn1");
 //    /*
-    autospawn(2, "upgrader", "Spawn1");
+    autospawn(4, "upgrader", "Spawn1");
     autospawn(2, "builder", "Spawn1");
 //    */
 
