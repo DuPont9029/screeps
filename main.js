@@ -13,6 +13,14 @@ var roleSigner = require('role.signer');
 var roleSuppliesSender = require('role.suppliesSender');
 var roleTombraider = require('role.tombraider');
 
+
+function hasTombstones(room) {
+    return room.find(FIND_TOMBSTONES, {
+        filter: (tomb) => tomb.store.getUsedCapacity() > 0
+    }).length > 0;
+}
+
+
 module.exports.loop = function () {
 
     for(var name in Memory.creeps) {
@@ -24,12 +32,15 @@ module.exports.loop = function () {
 
     generatePixels(false, true);
     autospawn(2, "harvester", "Spawn1");
-    autospawn(1, "tombraider", "Spawn1");
 //    /*
     autospawn(4, "upgrader", "Spawn1");
     autospawn(2, "builder", "Spawn1");
     autospawn(1, "reloader", "Spawn1");
 //    */
+
+if (hasTombstones(Game.spawns['Spawn1'].room)) {
+    autospawn(1, "tombraider", "Spawn1");
+}
 
 
     for (let rooms in Game.rooms) {
