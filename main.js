@@ -11,6 +11,7 @@ var roleClaimer = require('role.claimer');
 var roleReserver = require('role.reserver');
 var roleSigner = require('role.signer');
 var roleSuppliesSender = require('role.suppliesSender');
+var roleTombraider = require('role.tombraider');
 
 module.exports.loop = function () {
 
@@ -23,6 +24,7 @@ module.exports.loop = function () {
 
     generatePixels(false, true);
     autospawn(2, "harvester", "Spawn1");
+    autospawn(1, "tombraider", "Spawn1");
 //    /*
     autospawn(4, "upgrader", "Spawn1");
     autospawn(2, "builder", "Spawn1");
@@ -67,6 +69,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'suppliesSender') {
             roleSuppliesSender.run(creep);
+        }
+        if(creep.memory.role == 'tombraider') {
+            roleTombraider.run(creep);
         }
     }
 }
