@@ -26,11 +26,17 @@ var roleTombraider = {
 
         if (!creep.memory.collecting) {
             var storage = creep.room.storage;
-            if (storage) {
+            if (storage && creep.store.getUsedCapacity() > 0) {
                 for (const resourceType in creep.store) {
                     if (creep.transfer(storage, resourceType) === ERR_NOT_IN_RANGE) {
                         creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
+                }
+            } else {
+                // Se non ci sono tombe e non deve depositare, va alla flag
+                var flag = Game.flags['DuPont9029'];
+                if (flag) {
+                    creep.moveTo(flag, {visualizePathStyle: {stroke: '#00ff00'}});
                 }
             }
         }
