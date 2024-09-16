@@ -18,8 +18,13 @@ var roleTombraider = {
                         creep.moveTo(tombstone, {visualizePathStyle: {stroke: '#ffaa00'}});
                     }
                 }
+            } else {
+                // Se non ci sono tombe, passa alla modalità di deposito
+                creep.memory.collecting = false;
             }
-        } else {
+        } 
+
+        if (!creep.memory.collecting) {
             var storage = creep.room.storage;
             if (storage) {
                 for (const resourceType in creep.store) {
