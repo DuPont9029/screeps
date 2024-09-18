@@ -2,7 +2,7 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRangedAttacker = require('role.rangedAttacker');
-var roleHealer = require('role.fixer');
+var roleHealer = require('role.healer');
 var autospawn = require('autospawn');
 var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
@@ -12,7 +12,8 @@ var roleReserver = require('role.reserver');
 var roleSigner = require('role.signer');
 var roleSuppliesSender = require('role.suppliesSender');
 var roleTombraider = require('role.tombraider');
-const roleFixer = require('./role.fixer');
+var roleFixer = require('role.fixer');
+var roleMap = require('rolemap');
 
 
 
@@ -51,40 +52,11 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
         tower.run(room);
     }
 
-    for(var name in Game.creeps) {
-        var creep = Game.creeps[name];
-        if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
-        }
-        if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        }
-        if(creep.memory.role == 'builder') {
-            roleBuilder.run(creep);
-        }
-        if(creep.memory.role == 'rangedAttacker') {
-            roleRangedAttacker.run(creep);
-        }
-        if(creep.memory.role == 'fixer') {
-            roleFixer.run(creep);
-        }
-        if(creep.memory.role == 'reloader') {
-            roleReloader.run(creep);
-        }
-        if(creep.memory.role == 'claimer') {
-            roleClaimer.run(creep);
-        }
-        if(creep.memory.role == 'reserver') {
-            roleReserver.run(creep);
-        }
-        if(creep.memory.role == 'signer') {
-            roleSigner.run(creep);
-        }
-        if(creep.memory.role == 'suppliesSender') {
-            roleSuppliesSender.run(creep);
-        }
-        if(creep.memory.role == 'tombraider') {
-            roleTombraider.run(creep);
+    for (const name in Game.creeps) {
+        const creep = Game.creeps[name];
+        const role = creep.memory.role;
+        if (roleMap[role]) {
+            roleMap[role].run(creep);
         }
     }
 }
