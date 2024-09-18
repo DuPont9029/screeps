@@ -1,18 +1,6 @@
-var roleHarvester = require('role.harvester');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
-var roleRangedAttacker = require('role.rangedAttacker');
-var roleHealer = require('role.healer');
 var autospawn = require('autospawn');
 var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
-var roleReloader = require('role.reloader');
-var roleClaimer = require('role.claimer');
-var roleReserver = require('role.reserver');
-var roleSigner = require('role.signer');
-var roleSuppliesSender = require('role.suppliesSender');
-var roleTombraider = require('role.tombraider');
-var roleFixer = require('role.fixer');
 var roleMap = require('rolemap');
 
 

@@ -4,6 +4,7 @@ const roleProperties = {
     builder: [WORK, CARRY, CARRY, CARRY, MOVE],
     rangedAttacker: [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, MOVE],
     fixer: [WORK, CARRY, CARRY, MOVE], // Nota: questo potrebbe essere troppo costoso
+    healer: [HEAL, MOVE, MOVE],
     reloader: [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE],
     claimer: [CLAIM, MOVE],
     reserver: [CLAIM, MOVE],
