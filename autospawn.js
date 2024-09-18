@@ -13,7 +13,6 @@ function autospawn(number, role, spawnName, targetFlag, signMessage, pathName) {
                         role: role,
                         targetFlag: targetFlag, // Add target flag to memory
                         signMessage: signMessage, // Add sign message to memory
-                        pathName: pathName // Add path name to memory
                     } 
                 });
             }
