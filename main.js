@@ -12,7 +12,7 @@ var roleReserver = require('role.reserver');
 var roleSigner = require('role.signer');
 var roleSuppliesSender = require('role.suppliesSender');
 var roleTombraider = require('role.tombraider');
-var roleScout = require('role.scout');
+
 
 
 function hasTombstones(room) {
@@ -84,9 +84,6 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
         }
         if(creep.memory.role == 'tombraider') {
             roleTombraider.run(creep);
-        }
-        if(creep.memory.role == 'scout') {
-            roleScout.run(creep);
         }
     }
 }
