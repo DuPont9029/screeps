@@ -2,7 +2,7 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRangedAttacker = require('role.rangedAttacker');
-var roleHealer = require('role.healer');
+var roleHealer = require('role.fixer');
 var autospawn = require('autospawn');
 var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
@@ -12,6 +12,7 @@ var roleReserver = require('role.reserver');
 var roleSigner = require('role.signer');
 var roleSuppliesSender = require('role.suppliesSender');
 var roleTombraider = require('role.tombraider');
+const roleFixer = require('./role.fixer');
 
 
 
@@ -45,7 +46,7 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
 
 
     for (let rooms in Game.rooms) {
-        
+
         let room = Game.rooms[rooms];
         tower.run(room);
     }
@@ -64,8 +65,8 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
         if(creep.memory.role == 'rangedAttacker') {
             roleRangedAttacker.run(creep);
         }
-        if(creep.memory.role == 'healer') {
-            roleHealer.run(creep);
+        if(creep.memory.role == 'fixer') {
+            roleFixer.run(creep);
         }
         if(creep.memory.role == 'reloader') {
             roleReloader.run(creep);
