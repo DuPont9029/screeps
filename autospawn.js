@@ -1,6 +1,6 @@
 const roleProperties = require('role.properties');
 
-function autospawn(number, role, spawnName, targetFlag, signMessage) {
+function autospawn(number, role, spawnName, targetFlag, signMessage, pathName) {
     var EntityNumber = _.filter(Game.creeps, (creep) => creep.memory.role == role).length; // numero di creeps
     console.log('Creeps: ' + EntityNumber); 
 
@@ -12,7 +12,8 @@ function autospawn(number, role, spawnName, targetFlag, signMessage) {
                     memory: { 
                         role: role,
                         targetFlag: targetFlag, // Add target flag to memory
-                        signMessage: signMessage // Add sign message to memory
+                        signMessage: signMessage, // Add sign message to memory
+                        pathName: pathName // Add path name to memory
                     } 
                 });
             }
