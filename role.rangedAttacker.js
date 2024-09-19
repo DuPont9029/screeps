@@ -7,7 +7,7 @@ var roleRangedAttacker = {
     /* @param {Creep} creep */
     run: function(creep) {
     // Posizione di pattuglia
-    var patrolFlag = Game.flags['PATROL'];
+    var patrolFlag = Game.flags[creep.memory.targetFlag];
 
     if (patrolFlag) {
         // Conta il numero di attaccanti nella posizione di pattuglia
