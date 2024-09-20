@@ -1,5 +1,5 @@
 let structurehits = 15000000;
-const avoidUsername = ['neverquest', 'duce']; // Define the username to avoid attacking
+const avoidUsername = ['neverquest', 'duce', 'PersonaComune']; // Define the username to avoid attacking
 
 var structureTower = {
     run: function (roomName) {

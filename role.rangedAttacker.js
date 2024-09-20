@@ -1,5 +1,5 @@
 let troopnumber = 1;
-const avoidUsername = ['neverquest', 'Duce']; // Define the username to avoid attacking
+const avoidUsername = ['neverquest', 'Duce', 'PersonaComune']; // Define the username to avoid attacking
 
 var roleRangedAttacker = {
 
