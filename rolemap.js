@@ -10,10 +10,12 @@ const roleSigner = require('role.signer');
 const roleSuppliesSender = require('role.suppliesSender');
 const roleTombraider = require('role.tombraider');
 const roleFixer = require('role.fixer');
+const roleDistantUpgrader = require('role.distantUpgrader');
 
 const roleMap = {
     harvester: roleHarvester,
     upgrader: roleUpgrader,
+    distantUpgrader: roleDistantUpgrader,
     builder: roleBuilder,
     rangedAttacker: roleRangedAttacker,
     fixer: roleFixer,
