@@ -23,11 +23,11 @@ module.exports.loop = function () {
 
     generatePixels(false, true);
     autospawn(2, "harvester", "Spawn1");
-//    /*
-    autospawn(4, "upgrader", "Spawn1");
+    autospawn(3, "upgrader", "Spawn1");
     autospawn(2, "builder", "Spawn1");
     autospawn(1, "reloader", "Spawn1");
-//    */
+    autospawn(1, "distantUpgrader", "Spawn1", "CLAIM")
+
 
 if (hasTombstones(Game.spawns['Spawn1'].room)) {
     autospawn(1, "tombraider", "Spawn1");
