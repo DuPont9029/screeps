@@ -3,7 +3,6 @@ var roleBuilder = {
     run: function (creep) {
 
         let targets;
-        let room_dest;
         let const_sites = creep.room.find(FIND_CONSTRUCTION_SITES)
         let const_sites_sorted = _.sortBy(const_sites, s => s.progress)
         
@@ -19,10 +18,12 @@ var roleBuilder = {
                 }
         });
 
-        if (creep.memory.room_dest != null && creep.room.name !== creep.memory.room_dest) {
-            room_dest = creep.memory.room_dest;
-            var roomName = String(room_dest);
-            creep.moveTo(new RoomPosition(25, 25, roomName));
+        var flag = Game.flags[creep.memory.targetFlag];
+
+        if (flag && creep.room.name !== flag.pos.roomName) {
+            // Move to the target room
+            creep.moveTo(flag, {visualizePathStyle: {stroke: '#ffffff'}});
+            return;
         } else {
             if (creep.memory.building && creep.store.getUsedCapacity([RESOURCE_ENERGY]) === 0) {
                 creep.memory.building = false;
@@ -44,16 +45,8 @@ var roleBuilder = {
                 }
             } else {
                 var sources = creep.pos.findClosestByPath(FIND_SOURCES);
-
-                if ((creep.room.energyAvailable > 300 && targets && creep.room.storage !== undefined) && creep.room.storage.store[RESOURCE_ENERGY] > 0) {
-                    if (creep.withdraw(creep.room.storage, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-                        creep.moveTo(creep.room.storage, {visualizePathStyle: {stroke: '#ffaa00'}});
-                    }
-                } else {
-                    creep.say("⛏")
-                    if (creep.harvest(sources) === ERR_NOT_IN_RANGE) {
-                        creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
-                    }
+                if (sources && creep.harvest(sources) === ERR_NOT_IN_RANGE) {
+                    creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
                 }
             }
         }

@@ -1,9 +1,13 @@
 var roleHarvester = {
-
-    /** @param {Creep} creep **/
     run: function(creep) {
-        if (creep.store.getFreeCapacity() > 0) {
-            // Se il creep non ha un nodo minerario assegnato, assegnagliene uno
+        if (creep.memory.harvesting && creep.store.getFreeCapacity() === 0) {
+            creep.memory.harvesting = false;
+        }
+        if (!creep.memory.harvesting && creep.store.getUsedCapacity() === 0) {
+            creep.memory.harvesting = true;
+        }
+
+        if (creep.memory.harvesting) {
             if (!creep.memory.sourceId) {
                 var sources = creep.room.find(FIND_SOURCES);
                 var source = sources[0];
@@ -33,21 +37,21 @@ var roleHarvester = {
                 creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         } else {
-            // Se il creep ha energia, trasferiscila al nucleo o a un'estensione solo se il suo inventario è pieno
-            if (creep.store[RESOURCE_ENERGY] > 0) {
-                var targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION ||
-                                structure.structureType == STRUCTURE_SPAWN) &&
-                                structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
-                    }
-                });
-
-                if (targets.length > 0) {
-                    if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
-                    }
+            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType === STRUCTURE_EXTENSION ||
+                            structure.structureType === STRUCTURE_SPAWN) &&
+                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                 }
+            });
+
+            if (target) {
+                if (creep.transfer(target, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                }
+            } else {
+                // Se non ci sono strutture da riempire, torna alla fonte
+                creep.memory.harvesting = true;
             }
         }
     }
