@@ -1,5 +1,5 @@
 const roleProperties = {
-    harvester: [WORK, CARRY, CARRY, MOVE],
+    harvester: [WORK, CARRY, CARRY, CARRY, MOVE],
     upgrader: [WORK, CARRY, CARRY, MOVE],
     distantUpgrader: [WORK, CARRY, CARRY, MOVE],
     builder: [WORK, CARRY, CARRY, CARRY, MOVE],
