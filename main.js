@@ -24,9 +24,9 @@ module.exports.loop = function () {
     generatePixels(false, true);
     autospawn(2, "harvester", "Spawn1");
     autospawn(3, "upgrader", "Spawn1");
-    autospawn(2, "builder", "Spawn1");
+    autospawn(2, "builder", "Spawn1", "ROOM2");
     autospawn(1, "reloader", "Spawn1");
-    autospawn(1, "distantUpgrader", "Spawn1", "CLAIM")
+    autospawn(1, "distantUpgrader", "Spawn1", "ROOM2");
 
 
 if (hasTombstones(Game.spawns['Spawn1'].room)) {
