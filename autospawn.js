@@ -7,7 +7,7 @@ function autospawn(number, role, spawnName, targetFlag, signMessage) {
     if (roleProperties[role]) {
         if (EntityNumber < number) {
             for (let i = 0; i < number - EntityNumber; i++) {
-                let newName = role.charAt(0).toUpperCase() + role.slice(1) + Game.time;
+                let newName = role.charAt(0).toUpperCase() + role.slice(1) + '-' + Game.time;
                 Game.spawns[spawnName].spawnCreep(roleProperties[role], newName, { 
                     memory: { 
                         role: role,
