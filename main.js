@@ -28,7 +28,9 @@ module.exports.loop = function () {
     autospawn(3, "upgrader", "Spawn1");
     autospawn(2, "builder", "Spawn1", "ROOM2");
     autospawn(1, "reloader", "Spawn1");
-    autospawn(1, "distantUpgrader", "Spawn1", "ROOM2");
+   
+    autospawn(3, "builder", "Spawn2");
+    autospawn(1, "upgrader", "Spawn2");
 
 
 if (hasTombstones(Game.spawns['Spawn1'].room)) {
