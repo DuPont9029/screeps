@@ -11,6 +11,7 @@ const roleSuppliesSender = require('role.suppliesSender');
 const roleTombraider = require('role.tombraider');
 const roleFixer = require('role.fixer');
 const roleDistantUpgrader = require('role.distantUpgrader');
+const roleMiner = require('role.miner');
 
 const roleMap = {
     harvester: roleHarvester,
@@ -25,7 +26,8 @@ const roleMap = {
     signer: roleSigner,
     suppliesSender: roleSuppliesSender,
     tombraider: roleTombraider,
-    healer: roleHealer
+    healer: roleHealer,
+    miner: roleMiner
 };
 
 module.exports = roleMap;

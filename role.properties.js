@@ -1,4 +1,5 @@
 const roleProperties = {
+    harvester_s: [WORK, CARRY, MOVE],
     harvester: [WORK, CARRY, CARRY, CARRY, MOVE],
     upgrader: [WORK, CARRY, CARRY, MOVE],
     distantUpgrader: [WORK, CARRY, CARRY, MOVE],
@@ -12,6 +13,7 @@ const roleProperties = {
     signer: [CLAIM, MOVE],
     suppliesSender: [WORK, CARRY, CARRY, MOVE],
     tombraider: [WORK, CARRY, CARRY, MOVE],
+    miner:[WORK, WORK, CARRY, MOVE],
 };
 
 module.exports = roleProperties;
