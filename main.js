@@ -2,6 +2,8 @@ var autospawn = require('autospawn');
 var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
 var roleMap = require('rolemap');
+var manageTerminal = require('structure.terminal'); 
+
 
 
 
@@ -33,6 +35,7 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
     autospawn(1, "tombraider", "Spawn1");
 }
 
+    manageTerminal('DuPont9029', true, false);
 
     for (let rooms in Game.rooms) {
 
