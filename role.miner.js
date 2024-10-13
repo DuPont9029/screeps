@@ -26,18 +26,18 @@ var roleMiner = {
                 }
             }
         } else {
-            // Trova lo storage più vicino
-            var storage = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+            // Trova il terminale più vicino
+            var terminal = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return structure.structureType === STRUCTURE_STORAGE && 
+                    return structure.structureType === STRUCTURE_TERMINAL && 
                            structure.store.getFreeCapacity(RESOURCE_MINERAL) > 0;
                 }
             });
 
-            if (storage) {
+            if (terminal) {
                 for (const resourceType in creep.store) {
-                    if (creep.transfer(storage, resourceType) === ERR_NOT_IN_RANGE) {
-                        creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffffff'}});
+                    if (creep.transfer(terminal, resourceType) === ERR_NOT_IN_RANGE) {
+                        creep.moveTo(terminal, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 }
             }
