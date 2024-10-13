@@ -13,7 +13,7 @@ const roleProperties = {
     signer: [CLAIM, MOVE],
     suppliesSender: [WORK, CARRY, CARRY, MOVE],
     tombraider: [WORK, CARRY, CARRY, MOVE],
-    miner:[WORK, WORK, CARRY, MOVE],
+    miner:[WORK, CARRY, CARRY, MOVE],
 };
 
 module.exports = roleProperties;
