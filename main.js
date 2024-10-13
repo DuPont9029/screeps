@@ -35,7 +35,7 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
     autospawn(1, "tombraider", "Spawn1");
 }
 
-    manageTerminal('DuPont9029', true, false);
+    manageTerminal('DuPont9029', false, true); // true = send, false = receive
 
     for (let rooms in Game.rooms) {
 
