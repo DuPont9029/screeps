@@ -6,7 +6,7 @@ var roleHarvester = {
         if (!targetEnergy || targetEnergy.store.getUsedCapacity(RESOURCE_ENERGY) >= targetEnergy.store.getCapacity(RESOURCE_ENERGY)) {
             targetEnergy = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (structure) => {
-                    return (structure.structureType === STRUCTURE_SPAWN || structure.structureType === STRUCTURE_EXTENSION)
+                    return (structure.structureType === STRUCTURE_EXTENSION || structure.structureType === STRUCTURE_SPAWN)
                         && structure.store.getUsedCapacity(RESOURCE_ENERGY) < structure.store.getCapacity(RESOURCE_ENERGY);
                 }
             });
