@@ -1,57 +1,59 @@
 var roleHarvester = {
-    run: function(creep) {
-        if (creep.memory.harvesting && creep.store.getFreeCapacity() === 0) {
-            creep.memory.harvesting = false;
+    run: function (creep) {
+        let targetEnergyId = creep.memory.targetEnergyId;
+        let targetEnergy = targetEnergyId ? Game.getObjectById(targetEnergyId) : null;
+
+        if (!targetEnergy || targetEnergy.store.getUsedCapacity(RESOURCE_ENERGY) >= targetEnergy.store.getCapacity(RESOURCE_ENERGY)) {
+            targetEnergy = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType === STRUCTURE_SPAWN || structure.structureType === STRUCTURE_EXTENSION)
+                        && structure.store.getUsedCapacity(RESOURCE_ENERGY) < structure.store.getCapacity(RESOURCE_ENERGY);
+                }
+            });
+            if (targetEnergy) {
+                creep.memory.targetEnergyId = targetEnergy.id;
+            } else {
+                creep.memory.targetEnergyId = null;
+            }
         }
-        if (!creep.memory.harvesting && creep.store.getUsedCapacity() === 0) {
-            creep.memory.harvesting = true;
-        }
 
-        if (creep.memory.harvesting) {
-            if (!creep.memory.sourceId) {
-                var sources = creep.room.find(FIND_SOURCES);
-                var source = sources[0];
+        let flag = Game.flags[creep.memory.targetFlag];
 
-                // Controlla se ci sono più di 4 harvester nel nodo minerario
-                var harvestersAtSource = _.filter(Game.creeps, (c) => c.memory.role == 'harvester' && c.memory.sourceId == source.id).length;
-                if (harvestersAtSource > 4) {
-                    // Trova il nodo minerario più vicino senza nemici
-                    var safeSources = creep.room.find(FIND_SOURCES, {
-                        filter: (s) => {
-                            var hostiles = s.pos.findInRange(FIND_HOSTILE_CREEPS, 5);
-                            return hostiles.length == 0;
-                        }
-                    });
+        if (flag && creep.room.name !== flag.pos.roomName) {
+            // Move to the target room
+            creep.moveTo(flag, {visualizePathStyle: {stroke: '#ffffff'}});
+            return;
+        } else {
+            let usedCapacity = creep.store.getUsedCapacity(RESOURCE_ENERGY);
+            let totalCapacity = creep.store.getCapacity(RESOURCE_ENERGY);
 
-                    if (safeSources.length > 0) {
-                        source = safeSources[0];
+            if (creep.memory.harvesting && usedCapacity === 0) {
+                creep.memory.harvesting = false;
+            }
+            if (!creep.memory.harvesting && usedCapacity === totalCapacity) {
+                creep.memory.harvesting = true;
+            }
+
+            if (creep.memory.harvesting) {
+                if (targetEnergy) {
+                    if (creep.transfer(targetEnergy, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+                        creep.moveTo(targetEnergy, {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
+                }
+            } else {
+                let sourceId = creep.memory.sourceId;
+                let source = sourceId ? Game.getObjectById(sourceId) : null;
+
+                if (!source) {
+                    source = creep.pos.findClosestByPath(FIND_SOURCES);
+                    if (source) {
+                        creep.memory.sourceId = source.id;
                     }
                 }
 
-                creep.memory.sourceId = source.id;
-            }
-
-            // Raccogli energia dal nodo minerario assegnato
-            var source = Game.getObjectById(creep.memory.sourceId);
-            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
-            }
-        } else {
-            var target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (structure) => {
-                    return (structure.structureType === STRUCTURE_EXTENSION ||
-                            structure.structureType === STRUCTURE_SPAWN) &&
-                            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                if (source && creep.harvest(source) === ERR_NOT_IN_RANGE) {
+                    creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
                 }
-            });
-
-            if (target) {
-                if (creep.transfer(target, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-                }
-            } else {
-                // Se non ci sono strutture da riempire, torna alla fonte
-                creep.memory.harvesting = true;
             }
         }
     }
