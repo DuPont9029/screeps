@@ -32,13 +32,14 @@ module.exports.loop = function () {
    
     autospawn(3, "harvester", "Spawn2");
     autospawn(1, "upgrader", "Spawn2");
+    autospawn(1, "reloader", "Spawn2");
 
 
 if (hasTombstones(Game.spawns['Spawn1'].room)) {
     autospawn(1, "tombraider", "Spawn1");
 }
 
-    manageTerminal('DuPont9029', false, true); // true = send, false = receive
+    // manageTerminal('DuPont9029', false, true); // true = send, false = receive
 
     for (let rooms in Game.rooms) {
 
