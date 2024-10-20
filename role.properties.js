@@ -10,11 +10,12 @@ const roleProperties = {
     reloader: [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE],
     claimer: [CLAIM, MOVE],
     reserver: [CLAIM, MOVE],
-    signer: [CLAIM, MOVE],
+    signer: [MOVE],
     suppliesSender: [WORK, CARRY, CARRY, MOVE],
     tombraider: [WORK, CARRY, CARRY, MOVE],
     miner:[WORK, CARRY, CARRY, MOVE],
     attacker: [TOUGH, TOUGH, ATTACK, ATTACK, MOVE, MOVE],
+    roomAttacker: [CLAIM, MOVE],
 };
 
 module.exports = roleProperties;
