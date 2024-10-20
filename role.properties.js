@@ -14,6 +14,7 @@ const roleProperties = {
     suppliesSender: [WORK, CARRY, CARRY, MOVE],
     tombraider: [WORK, CARRY, CARRY, MOVE],
     miner:[WORK, CARRY, CARRY, MOVE],
+    attacker: [TOUGH, TOUGH, ATTACK, ATTACK, MOVE, MOVE],
 };
 
 module.exports = roleProperties;
