@@ -13,7 +13,6 @@ const roleFixer = require('role.fixer');
 const roleDistantUpgrader = require('role.distantUpgrader');
 const roleMiner = require('role.miner');
 const roleAttacker = require('role.attacker');
-const attacker  = require('role.properties');
 const roomAttacker = require('role.roomAttacker');
 
 const roleMap = {
