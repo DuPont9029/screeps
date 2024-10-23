@@ -1,14 +1,11 @@
 // Export the function
-module.exports = function manageTerminal(flagName, stopSell, stopBuy) {
+function manageTerminal(flagName, stopSell, stopBuy) {
     // Retrieve the terminal object using the flagName
     const terminal = Game.flags[flagName].room.terminal;
     if (!terminal) {
         console.log(`No terminal found in the room with flag: ${flagName}`);
         return;
     }
-
-    // Define the energy threshold for transactions
-    const energyThreshold = 5000;
 
     // Function to find the best order to sell
     function findBestSellOrder(resourceType) {
@@ -55,3 +52,50 @@ module.exports = function manageTerminal(flagName, stopSell, stopBuy) {
         }
     }
 };
+
+
+
+
+
+function buyById(transactionId) {
+    // Recupera i dettagli della transazione
+    const order = Game.market.getOrderById(transactionId);
+
+    // Trova la bandiera nella stanza del terminale
+    const terminalFlag = _.find(Game.flags, (flag) => flag.room && flag.room.terminal);
+
+    if (!terminalFlag) {
+        console.log('Nessuna bandiera trovata nella stanza del terminale.');
+        return;
+    }
+
+    // Verifica se l'ordine esiste e se è un'offerta di vendita di pixel
+    if (order && order.type === ORDER_SELL && order.resourceType === PIXEL) {
+        // Controlla se ci sono abbastanza crediti per completare la transazione
+        const totalCost = order.amount * order.price;
+        if (Game.market.credits < totalCost) {
+            console.log(totalCost)
+            console.log('Non ci sono abbastanza crediti per completare la transazione.');
+            return;
+        }
+
+        // Accetta la transazione e compra l'intero contenuto offerto
+        const result = Game.market.deal(transactionId, order.amount, terminalFlag.room.name);
+
+        // Controlla il risultato dell'operazione
+        if (result === OK) {
+            console.log(`Transazione accettata e ${order.amount} pixel comprati con successo.`);
+        } else {
+            console.log(`Errore nell'accettare la transazione: ${result}`);
+        }
+    } else {
+        console.log('Transazione non valida o non è un\'offerta di vendita di pixel.');
+    }
+}
+
+const terminalManager = {
+    manageTerminal,
+    buyById
+}
+
+module.exports = terminalManager;
