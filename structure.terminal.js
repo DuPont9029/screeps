@@ -6,7 +6,8 @@ function manageTerminal(flagName, stopSell, stopBuy) {
         console.log(`No terminal found in the room with flag: ${flagName}`);
         return;
     }
-
+    const energyThreshold = 5000;
+    
     // Function to find the best order to sell
     function findBestSellOrder(resourceType) {
         const orders = Game.market.getAllOrders({ type: ORDER_BUY, resourceType });
