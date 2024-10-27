@@ -1,50 +1,59 @@
-var roleFixer = {
-    /** @param {Creep} creep **/
+const roleFixer = {
+    run: function (creep) {
+        const REPAIR_THRESHOLD = 15000000; // Soglia di riparazione in punti vita
 
-    run: function(creep) {
-        // Se il creep ha capacità libera per l'energia, trova una fonte di energia e raccoglila
-        if (creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
-            if (!creep.memory.sourceId) {
-                var sources = creep.room.find(FIND_SOURCES);
-                var targetSource = sources.find(source => {
-                    var creepsAtSource = _.filter(Game.creeps, (c) => c.memory.sourceId == source.id);
-                    var enemiesNearSource = source.pos.findInRange(FIND_HOSTILE_CREEPS, 3);
-                    return creepsAtSource.length < 3 && enemiesNearSource.length == 0;
-                });
-
-                if (targetSource) {
-                    creep.memory.sourceId = targetSource.id;
-                }
-            }
-
-            var source = Game.getObjectById(creep.memory.sourceId);
-            if (source) {
-                if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(source);
-                }
-            } else {
-                // Se non ci sono fonti libere e sicure, muoviti verso una posizione di attesa
-                creep.moveTo(Game.flags['WaitFlag'], {visualizePathStyle: {stroke: '#ffaa00'}});
-            }
-            return;
+        // Se il creep sta riparando e ha esaurito l'energia, passa alla raccolta
+        if (creep.memory.repairing && creep.store[RESOURCE_ENERGY] === 0) {
+            creep.memory.repairing = false;
+            creep.memory.repairTarget = null; // Resetta il target di riparazione
+            creep.say('🔄 harvest');
         }
 
-        // Trova strutture danneggiate
-        const damagedStructures = creep.room.find(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
+        // Se il creep sta raccogliendo energia e ha la capacità piena, passa alla riparazione
+        if (!creep.memory.repairing && creep.store[RESOURCE_ENERGY] === creep.store.getCapacity()) {
+            creep.memory.repairing = true;
+            creep.say('⚒️ repair');
+        }
 
-        // Ordina le strutture danneggiate in base ai loro punti vita
-        damagedStructures.sort((a, b) => a.hits - b.hits);
+        if (creep.memory.repairing) {
+            // Se non ha un target di riparazione, trova una nuova struttura da riparare
+            if (!creep.memory.repairTarget) {
+                const target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: (structure) => structure.hits < structure.hitsMax && structure.hits < REPAIR_THRESHOLD
+                });
 
-        while (creep.store[RESOURCE_ENERGY] > 0 && damagedStructures.length > 0) {
-            // Ripara la struttura più danneggiata
-            if (creep.repair(damagedStructures[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(damagedStructures[0]);
+                if (target) {
+                    creep.memory.repairTarget = target.id;
+                } else {
+                    // Se non ci sono strutture da riparare, passa alla raccolta di energia
+                    creep.memory.repairing = false;
+                    creep.say('🔄 harvest');
+                }
             }
-            // Rimuovi la struttura riparata dall'array
-            if (damagedStructures[0].hits == damagedStructures[0].hitsMax) {
-                damagedStructures.shift();
+
+            // Se ha un target di riparazione, continua a ripararlo
+            if (creep.memory.repairTarget) {
+                const target = Game.getObjectById(creep.memory.repairTarget);
+
+                // Se il target ha raggiunto la soglia di riparazione, resettalo
+                if (target && target.hits >= REPAIR_THRESHOLD) {
+                    creep.memory.repairTarget = null;
+                } else if (target && target.hits < target.hitsMax) {
+                    if (creep.repair(target) === ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target, { visualizePathStyle: { stroke: '#ffffff' } });
+                    }
+                } else {
+                    // Se il target è completamente riparato o non esiste più, resettalo
+                    creep.memory.repairTarget = null;
+                }
+            }
+        } else {
+            // Logica di raccolta energia simile a quella dei builder
+            const sources = creep.room.find(FIND_SOURCES);
+            const closestSource = creep.pos.findClosestByPath(sources);
+
+            if (closestSource && creep.harvest(closestSource) === ERR_NOT_IN_RANGE) {
+                creep.moveTo(closestSource, { visualizePathStyle: { stroke: '#ffaa00' } });
             }
         }
     }

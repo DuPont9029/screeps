@@ -16,6 +16,8 @@ var structureTower = {
         if (towers.length > 0) {
             for (let i = 0; i < towers.length; i++) {
                 let tower = towers[i];
+                
+                /*
                 if (tower.energy > 500 && roomName.energyAvailable > 500 && hostiles.length === 0) {
                     var initialDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
                         filter: (structure) => structure.hits < structure.hitsMax && (structure.structureType !== STRUCTURE_WALL || structure.hits < structurehits)
@@ -32,6 +34,7 @@ var structureTower = {
                         tower.repair(closestDamaged);
                     }
                 }
+                */
 
                 var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                     filter: (creep) => !avoidUsername.includes(creep.owner.username)
