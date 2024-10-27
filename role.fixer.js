@@ -5,7 +5,6 @@ const roleFixer = {
         // Se il creep sta riparando e ha esaurito l'energia, passa alla raccolta
         if (creep.memory.repairing && creep.store[RESOURCE_ENERGY] === 0) {
             creep.memory.repairing = false;
-            creep.memory.repairTarget = null; // Resetta il target di riparazione
             creep.say('🔄 harvest');
         }
 
