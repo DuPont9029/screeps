@@ -16,7 +16,7 @@ var structureTower = {
         if (towers.length > 0) {
             for (let i = 0; i < towers.length; i++) {
                 let tower = towers[i];
-                
+
                 /*
                 if (tower.energy > 500 && roomName.energyAvailable > 500 && hostiles.length === 0) {
                     var initialDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -35,6 +35,24 @@ var structureTower = {
                     }
                 }
                 */
+
+                if (tower.energy > 500 && roomName.energyAvailable > 500 && hostiles.length === 0) {
+                    var initialDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter: (structure) => structure.structureType === STRUCTURE_ROAD && structure.hits < structure.hitsMax
+                    });
+                
+                    if (initialDamagedStructure) {
+                        tower.repair(initialDamagedStructure);
+                    }
+                } else if (tower.energy > 200 && hostiles.length === 0) {
+                    var closestDamaged = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+                        filter: (structure) => structure.structureType === STRUCTURE_ROAD && structure.hits < structure.hitsMax
+                    });
+                    if (closestDamaged) {
+                        tower.repair(closestDamaged);
+                    }
+                }
+                
 
                 var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
                     filter: (creep) => !avoidUsername.includes(creep.owner.username)
