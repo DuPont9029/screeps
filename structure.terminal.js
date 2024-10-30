@@ -6,8 +6,13 @@ function buy(flagName, stopSell, stopBuy) {
         console.log(`No terminal found in the room with flag: ${flagName}`);
         return;
     }
-    const energyThreshold = 5000;
+    const resourceToSell = 'RESOURCE_OXYGEN'; // Replace with the actual resource name
+    const minimumResourceAmount = 10000;
     
+    if (terminal.store[resourceToSell] < minimumResourceAmount) {
+        //console.log(`Not enough ${resourceToSell} in the terminal. Minimum required: ${minimumResourceAmount}`);
+        return;
+    }
     // Function to find the best order to sell
     function findBestSellOrder(resourceType) {
         const orders = Game.market.getAllOrders({ type: ORDER_BUY, resourceType });
