@@ -8,7 +8,9 @@ function buy(flagName, stopSell, stopBuy) {
     }
     const resourceToSell = 'RESOURCE_OXYGEN'; // Replace with the actual resource name
     const minimumResourceAmount = 10000;
-    
+    const energyThreshold = 1000;
+
+
     if (terminal.store[resourceToSell] < minimumResourceAmount) {
         //console.log(`Not enough ${resourceToSell} in the terminal. Minimum required: ${minimumResourceAmount}`);
         return;
