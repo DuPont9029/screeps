@@ -39,8 +39,10 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
     autospawn(1, "tombraider", "Spawn1");
 }
 
-    // terminalManager.buy('DuPont9029', false, true); // true = send, false = receive
-
+    if (Game.time % 100 === 0) {
+        terminalManager.buy('DuPont9029', false, true); // true = send, false = receive
+    }
+    
     for (let rooms in Game.rooms) {
 
         let room = Game.rooms[rooms];
