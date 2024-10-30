@@ -1,5 +1,5 @@
 // Export the function
-function manageTerminal(flagName, stopSell, stopBuy) {
+function buy(flagName, stopSell, stopBuy) {
     // Retrieve the terminal object using the flagName
     const terminal = Game.flags[flagName].room.terminal;
     if (!terminal) {
@@ -95,7 +95,7 @@ function buyById(transactionId) {
 }
 
 const terminalManager = {
-    manageTerminal,
+    buy,
     buyById
 }
 
