@@ -16,6 +16,7 @@ const roleProperties = {
     miner:[WORK, CARRY, CARRY, MOVE],
     attacker: [TOUGH, TOUGH, ATTACK, ATTACK, MOVE, MOVE],
     roomAttacker: [CLAIM, MOVE],
+    drainer: [TOUGH, TOUGH, TOUGH, HEAL, HEAL, MOVE, MOVE],
 };
 
 module.exports = roleProperties;

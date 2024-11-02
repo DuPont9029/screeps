@@ -14,6 +14,7 @@ const roleDistantUpgrader = require('role.distantUpgrader');
 const roleMiner = require('role.miner');
 const roleAttacker = require('role.attacker');
 const roomAttacker = require('role.roomAttacker');
+const roleDrainer = require('role.drainer');
 
 const roleMap = {
     harvester: roleHarvester,
@@ -32,6 +33,7 @@ const roleMap = {
     miner: roleMiner,
     attacker: roleAttacker,
     roomAttacker: roomAttacker,
+    drainer: roleDrainer,
 };
 
 module.exports = roleMap;
