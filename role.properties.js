@@ -1,3 +1,5 @@
+
+
 const roleProperties = {
     harvester_s: [WORK, CARRY, MOVE],
     harvester: [WORK, CARRY, CARRY, CARRY, MOVE],
@@ -16,7 +18,8 @@ const roleProperties = {
     miner:[WORK, CARRY, CARRY, MOVE],
     attacker: [TOUGH, TOUGH, ATTACK, ATTACK, MOVE, MOVE],
     roomAttacker: [CLAIM, MOVE],
-    drainer: [TOUGH, TOUGH, TOUGH, TOUGH, TOUGH, TOUGH,  HEAL, HEAL, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE],
+    drainer: [TOUGH, TOUGH,  HEAL, HEAL, MOVE, MOVE],
+    roleDistantMiner: [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
 };
 
 module.exports = roleProperties;
