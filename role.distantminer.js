@@ -24,7 +24,7 @@ var roleDistantMiner = {
                     creep.moveTo(mineral, {visualizePathStyle: {stroke: '#ffaa00'}, avoid: this.avoidSourceKeepers()});
                 }
             } else {
-                var lab = Game.getObjectById(creep.memory.labId);
+                var lab = Game.getObjectById(creep.memory.structId);
                 if (lab && creep.transfer(lab, RESOURCE_MINERAL) === ERR_NOT_IN_RANGE) {
                     creep.moveTo(lab, {visualizePathStyle: {stroke: '#ffffff'}, avoid: this.avoidSourceKeepers()});
                 }

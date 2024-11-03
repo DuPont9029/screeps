@@ -1,6 +1,6 @@
 const roleProperties = require('role.properties');
 
-function autospawn(number, role, spawnName, targetFlag, signMessage, labId) {
+function autospawn(number, role, spawnName, targetFlag, signMessage, structId) {
     const spawn = Game.spawns[spawnName];
     if (!spawn) {
         console.log('Spawner not found: ' + spawnName);
@@ -20,7 +20,7 @@ function autospawn(number, role, spawnName, targetFlag, signMessage, labId) {
                         role: role,
                         targetFlag: targetFlag, // Add target flag to memory
                         signMessage: signMessage, // Add sign message to memory
-                        labId: labId
+                        structId: structId
                     } 
                 });
             }

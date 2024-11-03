@@ -20,7 +20,8 @@ const roleProperties = {
     roomAttacker: [CLAIM, MOVE],
     drainer: [TOUGH, TOUGH,  HEAL, HEAL, MOVE, MOVE],
     distantMiner: [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
-    regenerator: [CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE]
+    regenerator: [CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE],
+    distantBuilder: [WORK, CARRY, CARRY, CARRY, MOVE],
 };
 
 module.exports = roleProperties;
