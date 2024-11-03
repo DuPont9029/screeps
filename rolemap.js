@@ -15,7 +15,7 @@ const roleMiner = require('role.miner');
 const roleAttacker = require('role.attacker');
 const roomAttacker = require('role.roomAttacker');
 const roleDrainer = require('role.drainer');
-const roleDistantMiner = require('role.distantMiner');
+const roleDistantMiner = require('role.distantminer');
 
 const roleMap = {
     harvester: roleHarvester,
