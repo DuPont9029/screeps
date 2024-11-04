@@ -7,12 +7,13 @@ function buy(flagName, stopSell, stopBuy) {
         return;
     }
     const resourceToSell = 'RESOURCE_OXYGEN'; // Replace with the actual resource name
-    const minimumResourceAmount = 10000;
+    
     const energyThreshold = 1000;
 
+
     //if (!terminal.store[resourceToSell] || terminal.store[resourceToSell] < minimumResourceAmount)
-    if (minimumResourceAmount > terminal.store[resourceToSell]) {
-        console.log(`Not enough ${resourceToSell} in the terminal. Minimum required: ${minimumResourceAmount}`);
+    if (!terminal.store[resourceToSell] || terminal.store[resourceToSell] < 1000) {
+        console.log(`Not enough ${resourceToSell} in the terminal. Minimum required: 1000}`);
         return;
     }
     // Function to find the best order to sell
