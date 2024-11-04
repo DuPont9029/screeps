@@ -39,7 +39,6 @@ const roleMap = {
     drainer: roleDrainer,
     distantMiner: roleDistantMiner,
     regenerator: roleRegenerator,
-    distantMiner: roleDistantMiner
 };
 
 module.exports = roleMap;
