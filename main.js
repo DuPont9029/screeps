@@ -3,7 +3,7 @@ var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
 var roleMap = require('rolemap');
 var terminalManager = require('structure.terminal');
-var ciao = require('userscript/foldertest');
+
 
 
 
@@ -23,7 +23,7 @@ module.exports.loop = function () {
         }
     }
 
-    ciao('DuPont9029');
+ 
 
     generatePixels(false, true);
     autospawn(3, "harvester", "Spawn1");
