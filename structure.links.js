@@ -6,20 +6,21 @@ const linkAssociations = [
 
 // Funzione per controllare se un link ha raggiunto il threshold di energia
 function isFull(link) {
-    const threshold = 100; // Definisci il threshold di energia
+    const threshold = 300; // Definisci il threshold di energia
     return link.energy >= threshold;
 }
 
 // Funzione per trasferire energia dal link pieno al link associato
 function transferEnergy(fromLink, toLink) {
     if (isFull(fromLink)) {
-        const energyToTransfer = fromLink.energy;
-        fromLink.energy = 0;
-        toLink.energy += energyToTransfer;
-        console.log(`Trasferita energia da ${fromLink.id} a ${toLink.id}`);
+        const result = fromLink.transferEnergy(toLink);
+        if (result === OK) {
+            console.log(`Trasferita energia da ${fromLink.id} a ${toLink.id}`);
+        } else {
+            console.log(`Errore nel trasferimento di energia da ${fromLink.id} a ${toLink.id}: ${result}`);
+        }
     }
 }
-
 // Esegui il controllo e il trasferimento di energia per ogni associazione
 linkAssociations.forEach(association => {
     const fromLink = Game.getObjectById(association.from);
