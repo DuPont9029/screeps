@@ -26,3 +26,8 @@ linkAssociations.forEach(association => {
     const toLink = Game.getObjectById(association.to);
     transferEnergy(fromLink, toLink);
 });
+
+module.exports = {
+    linkAssociations,
+    transferEnergy
+};
