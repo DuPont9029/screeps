@@ -22,7 +22,7 @@ function transferEnergy(fromLink, toLink) {
 
 // Esegui il controllo e il trasferimento di energia per ogni associazione
 linkAssociations.forEach(association => {
-    const fromLink = getLinkById(association.from);
-    const toLink = getLinkById(association.to);
+    const fromLink = Game.getObjectById(association.from);
+    const toLink = Game.getObjectById(association.to);
     transferEnergy(fromLink, toLink);
 });
