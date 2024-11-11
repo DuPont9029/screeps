@@ -3,7 +3,7 @@ var generatePixels = require('generatePixels');
 var tower = require('structure.tower');
 var roleMap = require('rolemap');
 var terminalManager = require('structure.terminal');
-
+const { linkAssociations, transferEnergy } = require('structure.links');
 
 
 
@@ -43,6 +43,13 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
 
     if (Game.time % 100 === 0) {
         terminalManager.buy('DuPont9029', false, true); // true = send, false = receive
+
+
+        linkAssociations.forEach(association => {
+            const fromLink = Game.getObjectById(association.from);
+            const toLink = Game.getObjectById(association.to);
+            transferEnergy(fromLink, toLink);
+        });
     }
     
     for (let rooms in Game.rooms) {
