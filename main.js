@@ -31,6 +31,7 @@ module.exports.loop = function () {
     autospawn(1, "reloader", "Spawn1");
     autospawn(1, "miner", "Spawn1");
     autospawn(1, "builder", "Spawn1");
+    autospawn(1, "linkReloader", "Spawn1", "Link1")
    
     autospawn(3, "harvester", "Spawn2");
     autospawn(1, "upgrader", "Spawn2");
@@ -43,8 +44,9 @@ if (hasTombstones(Game.spawns['Spawn1'].room)) {
 
     if (Game.time % 100 === 0) {
         terminalManager.buy('DuPont9029', false, true); // true = send, false = receive
-
-
+    }
+    
+    if (Game.time % 30 === 0) {
         linkAssociations.forEach(association => {
             const fromLink = Game.getObjectById(association.from);
             const toLink = Game.getObjectById(association.to);
