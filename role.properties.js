@@ -22,6 +22,7 @@ const roleProperties = {
     distantMiner: [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
     regenerator: [CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE],
     distantBuilder: [WORK, CARRY, CARRY, CARRY, MOVE],
+    linkReloader: [CARRY, CARRY, MOVE]
 };
 
 module.exports = roleProperties;
