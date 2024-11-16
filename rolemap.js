@@ -19,7 +19,7 @@ const roleDistantMiner = require('role.distantminer');
 const roleRegenerator = require('role.regenerator');
 const distantBuilder = require('role.distantBuilder');
 const roleLinkReloader = require('role.linkReloader');
-const rolestoreLoader = require('role.storeLoader');
+const rolestoreLoader = require('role.storeloader');
 
 const roleMap = {
     harvester: roleHarvester,
