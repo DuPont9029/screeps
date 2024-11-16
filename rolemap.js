@@ -43,7 +43,7 @@ const roleMap = {
     regenerator: roleRegenerator,
     distantBuilder: distantBuilder,
     linkReloader: roleLinkReloader,
-    storeLoader: storeLoader,
+    storeLoader: rolestoreLoader,
 };
 
 module.exports = roleMap;
