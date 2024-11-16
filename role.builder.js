@@ -14,7 +14,7 @@ var roleBuilder = {
              filter: (structure) => {
                 return ( /* structure.structureType === STRUCTURE_LINK  || structure.structureType === STRUCTURE_TOWER 
                     || structure.structureType === STRUCTURE_SPAWN || structure.structureType === STRUCTURE_EXTENSION  */ 
-                    structure.structureType === STRUCTURE_TERMINAL) && structure.store.getUsedCapacity([RESOURCE_ENERGY]) < structure.store.getCapacity([RESOURCE_ENERGY]);
+                    structure.structureType === STRUCTURE_LINK) && structure.store.getUsedCapacity([RESOURCE_ENERGY]) < structure.store.getCapacity([RESOURCE_ENERGY]);
                 }
         });
 
