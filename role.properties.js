@@ -24,6 +24,7 @@ const roleProperties = {
     distantBuilder: [WORK, CARRY, CARRY, CARRY, MOVE],
     linkReloader: [CARRY, CARRY, MOVE],
     storeLoader: [CARRY, CARRY, CARRY, MOVE],
+    refiller: [CARRY, CARRY, CARRY, CARRY, MOVE],
 };
 
 module.exports = roleProperties;
