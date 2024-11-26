@@ -46,6 +46,7 @@ const roleMap = {
     linkReloader: roleLinkReloader,
     storeLoader: rolestoreLoader,
     refiller: roleRefiller,
+    upgrader_s: roleUpgrader,
 };
 
 module.exports = roleMap;

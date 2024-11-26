@@ -32,11 +32,16 @@ module.exports.loop = function () {
     autospawn(1, "miner", "Spawn1");
     autospawn(1, "builder", "Spawn1");
     autospawn(1, "linkReloader", "Spawn1", "Link1")
-    autospawn(1, "storeLoader", "Spawn1", "Link2")
-   
-    autospawn(3, "harvester", "Spawn2");
-    autospawn(1, "upgrader", "Spawn2");
+    
+    
+    
+    autospawn(5, "upgrader", "Spawn2");
     autospawn(1, "reloader", "Spawn2");
+    autospawn(1, "refiller", "Spawn2", "room2receiver");
+    autospawn(2, "builder", "Spawn2");
+
+    autospawn(1, "upgrader_s", "Spawn3");
+    autospawn(1, "harvester_s", "Spawn3");
 
 
 if (hasTombstones(Game.spawns['Spawn1'].room)) {
