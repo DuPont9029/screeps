@@ -47,6 +47,7 @@ const roleMap = {
     storeLoader: rolestoreLoader,
     refiller: roleRefiller,
     upgrader_s: roleUpgrader,
+    harvester_s: roleHarvester,
 };
 
 module.exports = roleMap;
