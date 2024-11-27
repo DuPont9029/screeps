@@ -1,9 +1,8 @@
-
-
 const roleProperties = {
     harvester_s: [WORK, CARRY, MOVE],
     harvester: [WORK, CARRY, CARRY, CARRY, MOVE],
     upgrader: [WORK, CARRY, CARRY, MOVE],
+    upgrader_s: [WORK, CARRY, MOVE],
     distantUpgrader: [WORK, CARRY, CARRY, MOVE],
     builder: [WORK, CARRY, CARRY, CARRY, MOVE],
     rangedAttacker: [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, MOVE],
@@ -23,7 +22,7 @@ const roleProperties = {
     regenerator: [CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE],
     distantBuilder: [WORK, CARRY, CARRY, CARRY, MOVE],
     linkReloader: [CARRY, CARRY, MOVE],
-    storeLoader: [CARRY, CARRY, CARRY, MOVE],
+    storeLoader: [WORK, CARRY, CARRY, CARRY, MOVE],
     refiller: [CARRY, CARRY, CARRY, CARRY, MOVE],
 };
 
