@@ -2,27 +2,19 @@ var roleLinkFiller = {
 
     run: function (creep) {
 
-        let targetEnergy = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-             filter: (structure) => {
-                return ( /* structure.structureType === STRUCTURE_LINK  || structure.structureType === STRUCTURE_TOWER 
-                    || structure.structureType === STRUCTURE_SPAWN || structure.structureType === STRUCTURE_EXTENSION  */ 
-                    structure.structureType === STRUCTURE_LINK) && structure.store.getUsedCapacity([RESOURCE_ENERGY]) < structure.store.getCapacity([RESOURCE_ENERGY]);
-                }
-        });
-
-        var flag = Game.flags[creep.memory.targetFlag];
-
-        if (flag && creep.room.name !== flag.pos.roomName) {
-            // Move to the target room
-            creep.moveTo(flag, {visualizePathStyle: {stroke: '#ffffff'}});
-            return;
+        if (creep.store.getFreeCapacity() > 0) {
+            // Creep needs to harvest energy
+            let source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
+            if (source && creep.harvest(source) === ERR_NOT_IN_RANGE) {
+                creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
+            }
         } else {
-            if (creep.store.getUsedCapacity([RESOURCE_ENERGY]) === 0) {
-                creep.memory.building = false;
-            }
-            if (creep.store.getUsedCapacity([RESOURCE_ENERGY]) === creep.store.getCapacity([RESOURCE_ENERGY])) {
-                creep.memory.building = true;
-            }
+            // Creep needs to transfer energy to the closest link
+            let targetEnergy = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                filter: (structure) => {
+                    return (structure.structureType === STRUCTURE_LINK) && structure.store.getUsedCapacity([RESOURCE_ENERGY]) < structure.store.getCapacity([RESOURCE_ENERGY]);
+                }
+            });
 
             if (targetEnergy) {
                 if (creep.transfer(targetEnergy, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
@@ -32,3 +24,5 @@ var roleLinkFiller = {
         }
     }
 };
+
+module.exports = roleLinkFiller;
