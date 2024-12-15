@@ -21,6 +21,7 @@ const distantBuilder = require('role.distantBuilder');
 const roleLinkReloader = require('role.linkReloader');
 const rolestoreLoader = require('role.storeloader');
 const roleRefiller = require('role.refiller');
+const roleLinkFiller = require('role.linkFiller');
 
 const roleMap = {
     harvester: roleHarvester,
@@ -48,6 +49,7 @@ const roleMap = {
     refiller: roleRefiller,
     upgrader_s: roleUpgrader,
     harvester_s: roleHarvester,
+    linkFiller: roleLinkFiller,
 };
 
 module.exports = roleMap;

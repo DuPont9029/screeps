@@ -24,6 +24,7 @@ const roleProperties = {
     linkReloader: [CARRY, CARRY, MOVE],
     storeLoader: [WORK, CARRY, CARRY, CARRY, MOVE],
     refiller: [CARRY, CARRY, CARRY, CARRY, MOVE],
+    linkFiller: [WORK, WORK, CARRY, CARRY, MOVE],
 };
 
 module.exports = roleProperties;
