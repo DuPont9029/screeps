@@ -53,7 +53,6 @@ const roleMap = {
     harvester_s: roleHarvester,
     linkFiller: roleLinkFiller,
     dismantler: roleDismantler,
-    scout: roleScout,
 };
 
 module.exports = roleMap;

@@ -37,6 +37,7 @@ module.exports.loop = function () {
     autospawn(1, "reloader", "Spawn2");
     autospawn(1, "refiller", "Spawn2", "room2receiver");
     autospawn(2, "builder", "Spawn2");
+    autospawn(2, "linkFiller", "Spawn2");
 
     autospawn(1, "upgrader", "Spawn3");
     autospawn(1, "harvester", "Spawn3");
