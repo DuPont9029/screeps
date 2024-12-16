@@ -23,7 +23,7 @@ const rolestoreLoader = require('role.storeloader');
 const roleRefiller = require('role.refiller');
 const roleLinkFiller = require('role.linkFiller');
 const roleDismantler = require('role.dismantler');
-const roleScout = require('role.scout');
+
 
 const roleMap = {
     harvester: roleHarvester,
