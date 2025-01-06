@@ -1,13 +1,16 @@
-const roomsToTraverse = ["W44N52c", 'W45N52c', "W45N51c", "W46N51c", "W46N50c", "W47N50c", "W48N50c", "W49N50c", "W49N51c", "W49N52c", "W49N53c", "W48N53c"]; 
+const roomsToTraverse = ["W44N52c", 'W45N52c', "W45N51c", "W46N51c", "W46N50c", "W47N50c", "W48N50c", "W49N50c", "W49N51c", "W49N52c", "W49N53c", "DISMANTLE"]; 
 
-var roleDismantler = {
+const attackingRoom = "W48N53";
+
+var roleScout = {
     run: function(creep) {
         // Step 1: Define the danger room
         const dangerRoom = "W49N52c"; // Replace with your specific danger room
 
         // Step 2: Move through the flags in sequence
         for (let i = 0; i < roomsToTraverse.length; i++) {
-            const flag = Game.flags[roomsToTraverse[i]];
+            const flagName = roomsToTraverse[i];
+            const flag = Game.flags[flagName];
             if (!flag) continue;
 
             if (creep.pos.roomName !== flag.pos.roomName || !creep.pos.isEqualTo(flag.pos)) {
@@ -15,9 +18,11 @@ var roleDismantler = {
                 return;
             }
 
-            // Remove the room from the array after visiting it
-            roomsToTraverse.splice(i, 1);
-            i--; // Adjust the index after removal
+            // Remove the room from the array after visiting it, except for the "DISMANTLE" flag
+            
+                roomsToTraverse.splice(i, 1);
+                i--; // Adjust the index after removal
+            
 
             // Step 3: Handle the danger room
             if (creep.room.name === dangerRoom) {
@@ -69,8 +74,52 @@ var roleDismantler = {
             }
         }
 
-        // Step 4: Dismantle the wall with the least hits when reaching the final flag
-        if (roomsToTraverse.length === 0) {
+        // Step 4: Dismantle the wall with the least hits when reaching the "DISMANTLE" flag
+        if (attackingRoom === creep.room.name) {
+            // Check if the room is owned by the player
+            if (creep.room.controller && creep.room.controller.my) {
+                console.log("Room is owned by the player, not dismantling anything.");
+                // Move to the first room in the array
+                const firstFlag = Game.flags[roomsToTraverse[0]];
+                if (firstFlag) {
+                    creep.moveTo(firstFlag);
+                }
+                return;
+            }
+
+            const hostileStructures = creep.room.find(FIND_HOSTILE_STRUCTURES, {
+                filter: (structure) => structure.structureType === STRUCTURE_SPAWN || structure.structureType === STRUCTURE_EXTENSION
+            });
+
+            if (hostileStructures.length > 0) {
+                const pathToStructure = creep.pos.findPathTo(hostileStructures[0], {
+                    ignoreDestructibleStructures: false,
+                    ignoreCreeps: true
+                });
+
+                if (pathToSpawn.length > 0) {
+                    const obstacles = pathToStructure.map(step => creep.room.lookForAt(LOOK_STRUCTURES, step.x, step.y).find(s => s.structureType === STRUCTURE_WALL || s.structureType === STRUCTURE_RAMPART)).filter(Boolean);
+                    if (obstacles.length > 0) {
+                        const obstacleWithLeastHits = obstacles.reduce((prev, curr) => (prev.hits < curr.hits ? prev : curr));
+                        if (creep.dismantle(obstacleWithLeastHits) === ERR_NOT_IN_RANGE) {
+                            creep.moveTo(obstacleWithLeastHits);
+                        }
+                    } else {
+                        if (creep.dismantle(spawn) === ERR_NOT_IN_RANGE) {
+                            creep.moveTo(spawn);
+                        }
+                    }
+                } else {
+                    if (creep.dismantle(spawn) === ERR_NOT_IN_RANGE) {
+                        creep.moveTo(spawn);
+                    }
+                }
+            } else {
+                console.log("hurra");
+            }
+        
+
+            /*
             const walls = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => structure.structureType === STRUCTURE_WALL
             });
@@ -100,11 +149,12 @@ var roleDismantler = {
                         creep.moveTo(spawn);
                     }
                 } else {
-                    console.log("hurra");
+                    console.log("no walls or spawns found");
                 }
             }
+            */
         }
     }
 };
 
-module.exports = roleDismantler;
+module.exports = roleScout;

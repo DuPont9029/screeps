@@ -25,9 +25,11 @@ const roleLinkFiller = require('role.linkFiller');
 const roleDismantler = require('role.dismantler');
 
 
+
 const roleMap = {
     harvester: roleHarvester,
     upgrader: roleUpgrader,
+    upgrader_g: upgrader_g,
     distantUpgrader: roleDistantUpgrader,
     builder: roleBuilder,
     rangedAttacker: roleRangedAttacker,

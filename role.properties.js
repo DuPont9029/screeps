@@ -3,6 +3,7 @@ const roleProperties = {
     harvester: [WORK, CARRY, CARRY, CARRY, MOVE],
     upgrader: [WORK, CARRY, CARRY, MOVE],
     upgrader_s: [WORK, CARRY, MOVE],
+    upgrader_g: [WORK, WORK, CARRY, CARRY, MOVE],
     distantUpgrader: [WORK, CARRY, CARRY, MOVE],
     builder: [WORK, CARRY, CARRY, CARRY, MOVE],
     rangedAttacker: [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, MOVE],
@@ -26,6 +27,7 @@ const roleProperties = {
     refiller: [CARRY, CARRY, CARRY, CARRY, MOVE],
     linkFiller: [WORK, WORK, CARRY, CARRY, MOVE],
     dismantler: [WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, MOVE],
+
 };
 
 module.exports = roleProperties;
