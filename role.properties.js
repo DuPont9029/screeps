@@ -27,7 +27,7 @@ const roleProperties = {
     refiller: [CARRY, CARRY, CARRY, CARRY, MOVE],
     linkFiller: [WORK, WORK, CARRY, CARRY, MOVE],
     dismantler: [WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, MOVE],
-
+    distantHarvester: [WORK, WORK, WORK, CARRY, MOVE]
 };
 
 module.exports = roleProperties;
