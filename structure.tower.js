@@ -55,8 +55,13 @@ var structureTower = {
                 
 
                 var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
-                    filter: (creep) => !avoidUsername.includes(creep.owner.username)
+                    filter: (creep) => !avoidUsername.includes(creep.owner.username) && creep.getActiveBodyparts(HEAL) > 0
                 });
+                if (!closestHostile) {
+                    closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS, {
+                        filter: (creep) => !avoidUsername.includes(creep.owner.username)
+                    });
+                }
                 if (closestHostile) {
                     tower.attack(closestHostile);
                 }
