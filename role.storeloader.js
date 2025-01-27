@@ -15,8 +15,9 @@ var roleStoreLoader = {
             }
         } else {
             // Se il creep è pieno, trasferisce energia al link
-            if (creep.transfer(link, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(link, {visualizePathStyle: {stroke: '#ffffff'}});
+            const closestExtension = creep.pos.findClosestByRange(extensions);
+            if (creep.transfer(closestExtension, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(closestExtension, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }
     }
