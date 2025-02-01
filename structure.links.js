@@ -1,6 +1,8 @@
 const linkAssociations = [
     { from: '66ed30939331332979e53f14', to: '66ed5d56f1409b56d68faeac' },
-    { from: '673f68371f9e439eeaffba95', to: '673ff81bd42aeefde252f954' }
+    { from: '673f68371f9e439eeaffba95', to: '673ff81bd42aeefde252f954' },
+    { from: '679e4a2da29dba0f64507b75', to: '673ff81bd42aeefde252f954'},
+    { from: '6789857639db8b3629b6422b', to: '678a99192c03984585616dbf'}
     // Aggiungi altre associazioni qui
 ];
 

@@ -27,6 +27,7 @@ const roleDistantHarvester = require('role.distantHarvester');
 const roleLinkUpgrader = require('role.linkUpgrader');
 const roleHauler = require('role.hauler');
 const roleTerminalLoader = require('role.terminalLoader');
+const roleScout = require('role.scout');
 
 
 
@@ -62,7 +63,8 @@ const roleMap = {
     dismantler: roleDismantler,
     distantHarvester: roleDistantHarvester,
     hauler: roleHauler,
-    terminalLoader: roleTerminalLoader
+    terminalLoader: roleTerminalLoader,
+    scout: roleScout,
 };
 
 module.exports = roleMap;

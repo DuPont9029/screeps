@@ -32,7 +32,8 @@ module.exports.loop = function () {
     autospawn(1, "upgrader_g", "Spawn1");
     autospawn(1, "reloader", "Spawn1");
     autospawn(1, "miner", "Spawn1");
-    autospawn(2, "fixer", "Spawn1");
+    autospawn(1, "fixer", "Spawn1");
+   
     
     
     

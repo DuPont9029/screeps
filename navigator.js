@@ -1,19 +1,22 @@
 const navigator = {
     run: function(creep, rooms) {
-        for (let i = 0; i < rooms.length; i++) {
-            const flagName = rooms[i];
-            const flag = Game.flags[flagName];
-            if (!flag) continue;
-
-            if (creep.pos.roomName !== flag.pos.roomName || !creep.pos.isEqualTo(flag.pos)) {
-                creep.moveTo(flag, {visualizePathStyle: {stroke: '#ffffff'}});
-                return;
-            }
-
-            // Remove the room from the array after visiting it
-            rooms.splice(i, 1);
-            i--; // Adjust the index after removal
+        if (!creep.memory.currentRoomIndex) {
+            creep.memory.currentRoomIndex = 0;
         }
+
+        const currentRoom = rooms[creep.memory.currentRoomIndex];
+        const flag = Game.flags[currentRoom];
+        if (!flag) return false;
+
+        if (creep.pos.roomName !== flag.pos.roomName || !creep.pos.isEqualTo(flag.pos)) {
+            creep.moveTo(flag, {visualizePathStyle: {stroke: '#ffffff'}});
+        } else {
+            creep.memory.currentRoomIndex++;
+            if (creep.memory.currentRoomIndex >= rooms.length) {
+                return true; // Ritorna true quando l'ultima flag è raggiunta
+            }
+        }
+        return false;
     }
 };
 
