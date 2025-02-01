@@ -24,16 +24,17 @@ module.exports.loop = function () {
     }
 
  
-
+    
     generatePixels(false, true);
     
-    autospawn(3, "harvester", "Spawn1");
-    autospawn(4, "upgrader", "Spawn1");
+    autospawn(1, "refiller", "Spawn1", "fillLink");
+    autospawn(1, "linkFiller", "Spawn1");
+    autospawn(1, "upgrader_g", "Spawn1");
     autospawn(1, "reloader", "Spawn1");
     autospawn(1, "miner", "Spawn1");
-    autospawn(1, "builder", "Spawn1");
-    autospawn(1, "linkReloader", "Spawn1", "Link1");
     autospawn(2, "fixer", "Spawn1");
+    
+    
     
     autospawn(5, "upgrader", "Spawn2");
     autospawn(1, "reloader", "Spawn2");

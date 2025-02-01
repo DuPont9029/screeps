@@ -2,7 +2,7 @@ const roomsToTraverse = ["W44N52c", 'W45N52c', "W45N51c", "W46N51c", "W46N50c", 
 
 const attackingRoom = "W48N53";
 
-var roleScout = {
+var roleDismantler = {
     run: function(creep) {
         // Step 1: Define the danger room
         const dangerRoom = "W49N52c"; // Replace with your specific danger room
@@ -119,42 +119,9 @@ var roleScout = {
             }
         
 
-            /*
-            const walls = creep.room.find(FIND_STRUCTURES, {
-                filter: (structure) => structure.structureType === STRUCTURE_WALL
-            });
-
-            if (walls.length > 0) {
-                const wallWithLeastHits = walls.reduce((prev, curr) => (prev.hits < curr.hits ? prev : curr));
-                if (creep.dismantle(wallWithLeastHits) === ERR_NOT_IN_RANGE) {
-                    creep.moveTo(wallWithLeastHits);
-                } else if (wallWithLeastHits.hits === 0) {
-                    // Step 5: Dismantle the spawn after the wall is destroyed
-                    const spawns = creep.room.find(FIND_HOSTILE_SPAWNS);
-                    if (spawns.length > 0) {
-                        const spawn = spawns[0];
-                        if (creep.dismantle(spawn) === ERR_NOT_IN_RANGE) {
-                            creep.moveTo(spawn);
-                        }
-                    } else {
-                        console.log("hurra");
-                    }
-                }
-            } else {
-                // If no walls are found, dismantle the spawn
-                const spawns = creep.room.find(FIND_HOSTILE_SPAWNS);
-                if (spawns.length > 0) {
-                    const spawn = spawns[0];
-                    if (creep.dismantle(spawn) === ERR_NOT_IN_RANGE) {
-                        creep.moveTo(spawn);
-                    }
-                } else {
-                    console.log("no walls or spawns found");
-                }
-            }
-            */
+            
         }
     }
 };
 
-module.exports = roleScout;
+module.exports = roleDismantler;

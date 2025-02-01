@@ -2,12 +2,13 @@ const roleProperties = {
     harvester_s: [WORK, CARRY, MOVE],
     harvester: [WORK, CARRY, CARRY, CARRY, MOVE],
     upgrader: [WORK, CARRY, CARRY, MOVE],
+    upgrader_g: [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE],
     upgrader_s: [WORK, CARRY, MOVE],
     linkUpgrader: [WORK, WORK, WORK, CARRY, CARRY, MOVE],
     distantUpgrader: [WORK, CARRY, CARRY, MOVE],
     builder: [WORK, CARRY, CARRY, CARRY, MOVE],
     rangedAttacker: [TOUGH, TOUGH, RANGED_ATTACK, RANGED_ATTACK, MOVE],
-    fixer: [WORK, CARRY, CARRY, MOVE], // Nota: questo potrebbe essere troppo costoso
+    fixer: [WORK, WORK, WORK, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE], // Nota: questo potrebbe essere troppo costoso
     healer: [HEAL, MOVE, MOVE],
     reloader: [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE],
     claimer: [CLAIM, MOVE],
@@ -25,7 +26,7 @@ const roleProperties = {
     linkReloader: [CARRY, CARRY, MOVE],
     storeLoader: [WORK, CARRY, CARRY, CARRY, MOVE],
     refiller: [CARRY, CARRY, CARRY, CARRY, MOVE],
-    linkFiller: [WORK, WORK, CARRY, CARRY, MOVE],
+    linkFiller: [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE],
     dismantler: [WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, MOVE, MOVE, MOVE],
     distantHarvester: [WORK, WORK, WORK, WORK, WORK, CARRY, MOVE],
     hauler: [CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE, MOVE],
