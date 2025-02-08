@@ -65,6 +65,7 @@ const roleMap = {
     hauler: roleHauler,
     terminalLoader: roleTerminalLoader,
     scout: roleScout,
+    depositMiner: roleDepositMiner,
 };
 
 module.exports = roleMap;
