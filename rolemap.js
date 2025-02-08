@@ -28,6 +28,7 @@ const roleLinkUpgrader = require('role.linkUpgrader');
 const roleHauler = require('role.hauler');
 const roleTerminalLoader = require('role.terminalLoader');
 const roleScout = require('role.scout');
+const roleDepositMiner = require('role.depositMiner');
 
 
 
