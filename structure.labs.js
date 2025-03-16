@@ -1,3 +1,5 @@
+const labFunctions = require('labfunctions');
+
 StructureLab.prototype.runReactions = function(targetProduct) {
     const reactions = {
         'LO': ['L', 'O'], // Lemergo + Ossigeno = LO
@@ -23,8 +25,20 @@ StructureLab.prototype.runReactions = function(targetProduct) {
             lab1 = lab;
         } else if (lab.mineralType === reactant2) {
             lab2 = lab;
-        } else if (!lab.mineralType) {
-            lab3 = lab;
+        }
+    }
+
+    // Se la reazione è LO, usa il laboratorio dell'H per i risultati
+    if (targetProduct === 'LO') {
+        const labHId = labFunctions.getResourceId('H', this.room);
+        lab3 = Game.getObjectById(labHId);
+    } else {
+        // Trova un laboratorio non utilizzato per i risultati
+        for (let lab of labs) {
+            if (!lab.mineralType) {
+                lab3 = lab;
+                break;
+            }
         }
     }
 

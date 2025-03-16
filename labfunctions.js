@@ -58,12 +58,12 @@ const roleLabManager = {
 
     getResourceId: function(resource, room) {
         const resourceMapping = {
-            oxygen: [0, 0],
-            zynthium: [0, 1],
-            utrium: [1, 0],
-            keanium: [1, 2],
-            lemergium: [2, 1],
-            hydrogen: [2, 2]
+            O: [0, 0],
+            Z: [0, 1],
+            U: [1, 0],
+            K: [1, 2],
+            L: [2, 1],
+            H: [2, 2]
         };
 
         const position = resourceMapping[resource];

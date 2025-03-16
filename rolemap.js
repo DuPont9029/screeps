@@ -30,6 +30,7 @@ const roleTerminalLoader = require('role.terminalLoader');
 const roleScout = require('role.scout');
 const roleDepositMiner = require('role.depositMiner');
 const roleLabManager = require('role.labManager');
+const roleReactionEnder = require('role.reactionender');
 
 
 
@@ -68,7 +69,8 @@ const roleMap = {
     terminalLoader: roleTerminalLoader,
     scout: roleScout,
     depositMiner: roleDepositMiner,
-    labManager: roleLabManager
+    labManager: roleLabManager,
+    reactionEnder: roleReactionEnder
 };
 
 module.exports = roleMap;
