@@ -26,31 +26,41 @@ module.exports.loop = function () {
  
     
     generatePixels(false, true);
-    
+   
+
     autospawn(1, "refiller", "Spawn1", "fillLink");
     autospawn(1, "linkFiller", "Spawn1");
     autospawn(1, "upgrader_g", "Spawn1");
     autospawn(1, "reloader", "Spawn1");
     autospawn(1, "miner", "Spawn1");
     autospawn(1, "fixer", "Spawn1");
-   
-    
-    
-    
-    autospawn(5, "upgrader", "Spawn2");
+    autospawn(1, "builder", "Spawn1");
+    autospawn(3, "terminalLoader", "Spawn1");
+    autospawn(4, "linkUpgrader", "Spawn1", "fillink");
+
+    autospawn(6, "upgrader_g", "Spawn2");
     autospawn(1, "reloader", "Spawn2");
     autospawn(1, "refiller", "Spawn2", "room2receiver");
     autospawn(2, "builder", "Spawn2");
-    autospawn(2, "linkFiller", "Spawn2");
-    autospawn(2, "fixer", "Spawn2");
+    autospawn(3, "linkFiller", "Spawn2");
+    autospawn(3, "terminalLoader", "Spawn2");
 
-    autospawn(2, "linkUpgrader", "Spawn3", "room3receiver");
-    autospawn(1, "builder", "Spawn3");
-    autospawn(1, "reloader", "Spawn3");
-    autospawn(1, "fixer", "Spawn3");
+    
+    
+    autospawn(4, "linkUpgrader", "Spawn3", "room3receiver");
     autospawn(1, "refiller", "Spawn3", "room3receiver");
-    autospawn(2, "linkFiller", "Spawn3");
+    autospawn(3, "linkFiller", "Spawn3");
+    autospawn(2, "fixer", "Spawn3");
 
+
+    autospawn(1, "refiller", "Spawn4", "room4receiver");
+    autospawn(1, "linkFiller", "Spawn4");
+    autospawn(3, "upgrader_g", "Spawn4");
+    autospawn(4, "reloader", "Spawn4");
+    autospawn(1, "harvester", "Spawn4");
+    autospawn(2, "fixer", "Spawn4");
+    
+    
 if (hasTombstones(Game.spawns['Spawn1'].room)) {
     autospawn(1, "tombraider", "Spawn1");
 }

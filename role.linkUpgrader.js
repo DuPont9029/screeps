@@ -21,7 +21,7 @@ var roleLinkUpgrader = {
                         creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 }
-            } else {
+            } else if (creep.room.name != "W44N52") {
                 // Find the link near the flag
                 var link = flag.pos.findClosestByRange(FIND_STRUCTURES, {
                     filter: (structure) => structure.structureType === STRUCTURE_LINK && structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0
@@ -34,6 +34,17 @@ var roleLinkUpgrader = {
                 } else {
                     creep.moveTo(flag, {visualizePathStyle: {stroke: '#ffaa00'}});
                 }
+            }
+            else {
+                var storage = creep.pos.findClosestByPath(FIND_STRUCTURES, {
+                    filter: (s) => s.structureType === STRUCTURE_STORAGE
+                });
+                if (storage) {
+                    if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(storage, {visualizePathStyle: {stroke: '#ffaa00'}});
+                    }
+                }
+
             }
         }
     }
